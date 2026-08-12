@@ -1,0 +1,39 @@
+{
+  "format_version": 1,
+  "flash_size": "0x00800000",
+  "program_address_base": "0x90000000",
+  "reserved_regions": [
+    {
+      "name": "Arcbit 玩家目录管理区",
+      "address": "0x00700000",
+      "size": "0x00010000"
+    },
+    {
+      "name": "Arcbit v3.0 AppProfile v5、六玩家游戏目录、长期数据与快照区",
+      "address": "0x00710000",
+      "size": "0x000C0000"
+    },
+    {
+      "name": "Arcbit 全局后备区",
+      "address": "0x007D0000",
+      "size": "0x0002F000"
+    },
+    {
+      "name": "硬件自检扇区",
+      "address": "0x007FF000",
+      "size": "0x00001000"
+    }
+  ],
+  "resources": [
+    {
+      "name": "GBK16_Bold",
+      "file": "fonts/GBK16_Bold.bin",
+      "address": "0x00000000"
+    },
+    {
+      "name": "GBK24_Bold",
+      "file": "fonts/GBK24_Bold.bin",
+      "address": "0x000BC000"
+    }
+  ]
+}

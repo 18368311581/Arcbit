@@ -1,0 +1,26 @@
+{
+  "format": "GBK direct-slot column-major bitmap",
+  "slot_count": 23940,
+  "font_family": "Noto Sans SC",
+  "font_file": "C:\\Windows\\Fonts\\Noto Sans SC Bold (TrueType).otf",
+  "sizes": {
+    "16": {
+      "file": "fonts/GBK16_Bold.bin",
+      "bytes_per_glyph": 32,
+      "glyph_count": 23940,
+      "nonzero_glyph_count": 21790,
+      "size_bytes": 766080,
+      "sha256": "c8f3b03acbb809292f64d13cc0fcbab4da083aa39842d1e6413b68c096f5bf52",
+      "preview": "build/GBK16_preview.png"
+    },
+    "24": {
+      "file": "fonts/GBK24_Bold.bin",
+      "bytes_per_glyph": 72,
+      "glyph_count": 23940,
+      "nonzero_glyph_count": 21790,
+      "size_bytes": 1723680,
+      "sha256": "6736872b6dc188e97673692b61bf1b44316f1f22f1fa34bf0c6cc3fbdb727337",
+      "preview": "build/GBK24_preview.png"
+    }
+  }
+}

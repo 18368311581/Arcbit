@@ -1,0 +1,19 @@
+PRG 0 PI
+{
+    PrgCode +0
+    {
+        * (+RO)
+    }
+    PrgData +0
+    {
+        * (+RW,+ZI)
+    }
+}
+
+DSCR +0
+{
+    DevDscr +0
+    {
+        FlashDev.o
+    }
+}
