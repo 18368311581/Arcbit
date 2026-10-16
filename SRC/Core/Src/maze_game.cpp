@@ -290,7 +290,7 @@ bool MazeGame::variant_unlocked(const GameProgressView&,uint8_t variant) const{r
 void MazeGame::draw_variant_select(Ui& ui,uint8_t selected,uint8_t previous,const GameProgressView&,bool full_redraw) const{
     if(selected>=MazeRules::VariantCount){selected=0U;}bool redraw_both=full_redraw||selected==previous;if(full_redraw){ui.fill(16U,38U,288U,164U,UI_COLOR_PANEL);Lcd_draw_rect(16U,38U,288U,164U,UI_COLOR_LINE);ui.text(112U,52U,UiTextId::AdjustDifficulty,UI_COLOR_MUTED,UI_COLOR_PANEL,24U);ui.text(104U,176U,UiTextId::PromptSaveCancel,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);}
     uint16_t first_bg=select_focus_==0U?UI_COLOR_FOCUS_BG:UI_COLOR_PANEL,second_bg=select_focus_==1U?UI_COLOR_FOCUS_BG:UI_COLOR_PANEL;
-    if(redraw_both||select_focus_==0U){char value[12];size_text((uint8_t)(selected/2U*2U),value);ui.fill(18U,88U,284U,32U,first_bg);ui.text(28U,96U,UiTextId::BoardSize,select_focus_==0U?UI_COLOR_FOCUS:UI_COLOR_TEXT,first_bg,16U);if(select_focus_==0U){ui.lr_hint(216U,96U,78U,first_bg);}ui.ascii(238U,96U,value,UI_COLOR_MUTED,first_bg,16U);}
+    if(redraw_both||select_focus_==0U){char value[12];size_text((uint8_t)(selected/2U*2U),value);ui.fill(18U,88U,284U,32U,first_bg);ui.text(28U,96U,UiTextId::GridSize,select_focus_==0U?UI_COLOR_FOCUS:UI_COLOR_TEXT,first_bg,16U);if(select_focus_==0U){ui.lr_hint(216U,96U,78U,first_bg);}ui.ascii(238U,96U,value,UI_COLOR_MUTED,first_bg,16U);}
     if(redraw_both||select_focus_==1U){ui.fill(18U,126U,284U,32U,second_bg);ui.text(28U,134U,UiTextId::PositionMap,select_focus_==1U?UI_COLOR_FOCUS:UI_COLOR_TEXT,second_bg,16U);if(select_focus_==1U){ui.lr_hint(216U,134U,78U,second_bg);}ui.text(242U,134U,MazeRules::map_enabled(selected)?UiTextId::MapShown:UiTextId::MapHidden,UI_COLOR_MUTED,second_bg,16U);}
 }
 

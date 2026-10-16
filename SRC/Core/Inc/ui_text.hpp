@@ -125,7 +125,7 @@ enum class UiTextId : uint8_t {
     UndoRecordWarning,
     NewRecord,
     Game2048,
-    BoardSize,
+    GridSize,
     AdjustBoardSize,
     FlappyBird,
     PressYToFly,
@@ -214,6 +214,15 @@ enum class UiTextId : uint8_t {
     LowBatteryDetail,
     BatteryPlease,
     BatteryRefill,
+    LayerElimination,
+    ResetLayerPrompt,
+    RevealLayerPrompt,
+    GoalLayerElimination,
+    ControlLayerSelect,
+    ControlLayerFlip,
+    ControlLayerReset,
+    ControlLayerView,
+    ControlLayerReveal,
     Count
 };
 

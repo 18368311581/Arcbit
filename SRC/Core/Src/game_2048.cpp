@@ -160,7 +160,7 @@ void Game2048::draw_cell(Ui& ui,uint8_t index) const{
 
 void Game2048::draw_status(Ui& ui) const{
     char value[12];
-    ui.text(246U,8U,UiTextId::BoardSize,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);
+    ui.text(246U,8U,UiTextId::GridSize,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);
     size_text(state_.size_index,value);ui.ascii_fit(246U,30U,70U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
     ui.text(246U,70U,UiTextId::Score,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);
     format_u32(state_.score,value);ui.ascii_fit(246U,92U,70U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
@@ -235,7 +235,7 @@ void Game2048::draw_entry_page(Ui& ui,const GameActivity& activity,const GameOve
         }
     }
     ui.text(132U,45U,UiTextId::Game2048,UI_COLOR_PRIMARY,UI_COLOR_PANEL,24U);
-    ui.text(132U,78U,UiTextId::BoardSize,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);size_text(overview.last_variant,value);ui.ascii_fit(224U,78U,68U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
+    ui.text(132U,78U,UiTextId::GridSize,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);size_text(overview.last_variant,value);ui.ascii_fit(224U,78U,68U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
     ui.text(132U,101U,UiTextId::HighScore,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);format_u32(overview.high_score,value);ui.ascii_fit(224U,101U,68U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
     ui.text(28U,143U,UiTextId::RecentPlay,UI_COLOR_MUTED,UI_COLOR_PANEL,16U);format_activity(activity,value);ui.ascii_fit(100U,143U,166U,value,UI_COLOR_TEXT,UI_COLOR_PANEL);
 }

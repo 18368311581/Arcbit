@@ -123,7 +123,7 @@ static const char* const ui_texts[]={
     "悔棋后本局不计入最快纪录",
     "新纪录",
     "2048",
-    "棋盘大小",
+    "网格大小",
     "调整大小",
     "飞翔小鸟",
     "Y键起飞",
@@ -211,7 +211,16 @@ static const char* const ui_texts[]={
     "必需记录失效",
     "电量低，请及时补充电池",
     "请及时",
-    "补充电池"
+    "补充电池",
+    "层叠消融",
+    "确定重置当前网格吗",
+    "查看答案并结束本局吗",
+    "将网格变为指定图案",
+    "方向键：选择格子",
+    "Y键：翻转",
+    "A键：重置",
+    "按住X键：查看图案",
+    "B键：查看答案"
 };
 
 static_assert(sizeof(ui_texts)/sizeof(ui_texts[0])==(uint8_t)UiTextId::Count,"UI text table mismatch");

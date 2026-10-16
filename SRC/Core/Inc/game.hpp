@@ -14,7 +14,8 @@ enum class GameId : uint8_t {
     FlappyBird=5U,
     Tetris=6U,
     Minesweeper=7U,
-    Maze=8U
+    Maze=8U,
+    LayerElimination=9U
 };
 
 #define GAME_ACTIVITY_COUNT 4U

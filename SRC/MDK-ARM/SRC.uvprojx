@@ -528,6 +528,16 @@
               <FileType>8</FileType>
               <FilePath>..\Core\Src\maze_game.cpp</FilePath>
             </File>
+            <File>
+              <FileName>layer_elimination_rules.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\layer_elimination_rules.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>layer_elimination_game.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Core\Src\layer_elimination_game.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

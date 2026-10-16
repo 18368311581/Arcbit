@@ -2,7 +2,7 @@
 
 `FLASH_DOC/`是W25Q64外部资源、地址清单和烧录工具的正式目录。[`flash_resources.json`](flash_resources.json)是地址与保留区的唯一机器可读权威；源码和其他文档不得另行分配地址。
 
-当前Arcbit v3.0（修改日期`260812`）只使用两份外部字库，存档格式为`AppProfile v5 / GameCatalog v2`（`P5/C2`）。GameId 1～8已占用，新增GameId 9或10已具备固定存储槽，不需要调整Flash布局或重烧字库；只有新增外部静态资源时才修改JSON并重新烧录。
+当前Arcbit v3.1（修改日期`260901`）只使用两份外部字库，存档格式仍为`AppProfile v5 / GameCatalog v2 / GameDataStore v1`（`P5/C2`）。GameId 1～9已占用，仅GameId 10可用；GameId 9层叠消融直接使用既有固定槽，Flash布局和外部资源未变化，不需要资源重烧。只有新增外部静态资源时才修改JSON并重新烧录。
 
 ## 资源检查与烧录
 
@@ -58,7 +58,7 @@
 | `0x007D0000`～`0x007FEFFF` | `0x2F000` | 全局后备区 |
 | `0x007FF000`～`0x007FFFFF` | 4 KB | 硬件自检扇区 |
 
-新增GameId 9或10只需在现有公式对应的槽中保存快照，并使用`GameDataStore`中同ID条目；不得修改地址清单。每游戏长期数据负载最多508 B，快照最多1536 B。
+新增GameId 10只需在现有公式对应的槽中保存快照，并使用`GameDataStore`中同ID条目；不得修改地址清单。每游戏长期数据负载最多508 B，快照最多1536 B。
 
 ## 双槽与格式约束
 

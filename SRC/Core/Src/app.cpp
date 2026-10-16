@@ -6,6 +6,7 @@
 #include "game_2048.hpp"
 #include "gobang_game.hpp"
 #include "input.hpp"
+#include "layer_elimination_game.hpp"
 #include "maze_game.hpp"
 #include "minesweeper_game.hpp"
 #include "power.h"
@@ -54,8 +55,8 @@ static const uint8_t brightness_levels[5]={20U,40U,60U,80U,100U};
 static const uint32_t auto_dim_ms[4]={30000UL,60000UL,120000UL,0UL};
 static const uint32_t auto_off_ms[3]={60000UL,120000UL,300000UL};
 static const char product_name[]="Arcbit";
-static const char product_version[]="v3.0";
-static const char product_revision_date[]="260812";
+static const char product_version[]="v3.1";
+static const char product_revision_date[]="260901";
 static const uint8_t settings_page_starts[3]={0U,6U,12U};
 static const uint8_t settings_page_counts[3]={6U,6U,1U};
 static const uint8_t settings_count=13U;
@@ -70,7 +71,8 @@ static FlappyBirdGame flappy_bird;
 static TetrisGame tetris;
 static MinesweeperGame minesweeper;
 static MazeGame maze;
-static Game* const games[]={&snake,&competitive_snake,&gobang,&game_2048,&flappy_bird,&tetris,&minesweeper,&maze};
+static LayerEliminationGame layer_elimination;
+static Game* const games[]={&snake,&competitive_snake,&gobang,&game_2048,&flappy_bird,&tetris,&minesweeper,&maze,&layer_elimination};
 static_assert(sizeof(games)/sizeof(games[0])<=GAME_CAPACITY,"Registered games exceed game capacity");
 static PlayerDirectory player_directory;
 static PlayerDirectory directory_candidate;
@@ -147,7 +149,7 @@ static bool clock_drawn_rtc_valid=false;
 static uint32_t system_last_tick=0U;
 static uint8_t system_status_page=0U;
 static uint16_t game_menu_snapshot_length=0U;
-static GameRecordSummary record_cache[8][SAVE_PLAYER_COUNT];
+static GameRecordSummary record_cache[GAME_CAPACITY][SAVE_PLAYER_COUNT];
 static uint8_t records_page=0U;
 static bool game_ring_dirty=false;
 static uint8_t low_battery_count=0U;

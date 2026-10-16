@@ -1,0 +1,14 @@
+# Local agent state and archives
+.agents/
+*.rar
+*.zip
+__pycache__/
+*.pyc
+
+# Keil user settings and generated outputs
+*.uvguix.*
+*.uvoptx
+SRC/MDK-ARM/SRC/*
+!SRC/MDK-ARM/SRC/SRC.sct
+SRC/MDK-ARM/Generated/
+FLASH_DOC/build/
