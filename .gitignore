@@ -12,3 +12,7 @@ SRC/MDK-ARM/SRC/*
 !SRC/MDK-ARM/SRC/SRC.sct
 SRC/MDK-ARM/Generated/
 FLASH_DOC/build/
+
+# Print delivery uses the complete 3MF project; retain other local models privately
+3D/*
+!3D/3D打印文件.3mf

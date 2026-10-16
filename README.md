@@ -41,8 +41,41 @@
 | `SRC/Drivers/` | STM32 HAL、CMSIS 等第三方组件 |
 | `SRC/MDK-ARM/SRC.uvprojx` | Keil 工程，Target 为 `SRC` |
 | `PCB/game_play.eprj2` | 嘉立创 EDA 专业版工程 |
-| `3D/` | CATIA 模型、STL 与 3MF 文件 |
+| `3D/3D打印文件.3mf` | 完整打印工程，包含本项目需要的打印资料 |
 | `FLASH_DOC/` | 外部字库、地址清单、Loader 与烧录工具 |
+
+## 简单制作流程
+
+从 [Releases](https://github.com/18368311581/Arcbit/releases) 下载 `Arcbit-v3.1.zip` 并完整解压，从本 README 开始。制作包使用现有工程和资源，附带已有 v3.1 内部固件；源码仓库也可单独下载并自行编译。
+
+### 1. PCB 制作与焊接
+
+用嘉立创 EDA **专业版**打开 `PCB/game_play.eprj2`，查看原理图和 PCB，按工程中的器件型号、封装与方向准备元件并焊接。
+
+在 PCB 页面使用“PCB 下单”，或从“导出 / 制造”菜单生成 PCB 制板文件（Gerber）后下单；物料清单（BOM）也可从工程直接导出。不同版本菜单位置略有差异，可参考[官方快速入门](https://prodocs.lceda.cn/cn/quick-start.html)。本项目只提供 PCB 工程，不重复维护单独的 Gerber 和 BOM。
+
+### 2. 外壳打印与装配
+
+在支持 3MF 工程的切片软件中以“打开工程”的方式打开 `3D/3D打印文件.3mf`，保留其中的模型与摆放信息，核对当前打印机、耗材和打印参数后切片打印。该文件已包含所需打印资料，不需要另找 STL 或 CATIA 文件。
+
+装配使用的螺丝均为**十字平头螺丝钉**：
+
+| 规格 | 数量 |
+| --- | ---: |
+| M3 × 5 mm | 8 个 |
+| M3 × 8 mm | 4 个 |
+| M3 × 12 mm | 4 个 |
+
+按外壳孔位和实际安装位置装配。屏幕等配件可以选用兼容型号，替换时核对接口、供电和安装尺寸。
+
+### 3. 烧录与首次运行
+
+1. 准备 Windows、Keil MDK、STM32F4 设备支持和 SWD 调试器。按 PCB 工程连接 SWDIO、SWCLK 和 GND，核对供电；沿用已验证的 DAP 供电方式时，断开主电源，仅由确认具有 3.3 V 输出的调试器给 `3V3` 供电。
+2. 首次制作先准备外部字库：安装 Python 3，双击 `FLASH_DOC/一键烧录资源.cmd`，按下文的外部 Flash 说明操作，确认日志出现 **Verify OK**。工具默认查找 `C:\Keil_v5\UV4\UV4.exe` 或 `C:\Keil\UV4\UV4.exe`。
+3. 打开 `SRC/MDK-ARM/SRC.uvprojx`，Target 选择 `SRC`，在 Options for Target 的 Debug / Utilities 中选择实际调试器，内部 Flash 算法应对应 STM32F411RE。制作包已附带 `SRC/MDK-ARM/SRC/SRC.hex`，可用 Keil 下载该 HEX，或按下一节重新编译后下载。烧录内部固件时使用 MCU 内部 Flash 算法，不能沿用外部资源 Loader。
+4. 结束烧录后断开调试器供电，按工程设计恢复正常供电并开机。检查中文显示、方向键及确认/返回键、声音和九款游戏入口；进入游戏后暂停、返回 HOME、重新进入，确认快照可恢复；再检查关机重启后记录保留，以及不同玩家的数据独立。
+
+制作包中的 HEX 沿用已有 v3.1 构建产物，本次资料整理未重新编译、烧录或执行实板验收。PCB 工程、打印工程与固件均保留现有设计。
 
 ## 构建固件
 
@@ -51,7 +84,7 @@
 3. 执行 **Rebuild All**。构建前事件调用 `generate_gbk_ui_text.ps1`，将 UTF-8 的 `ui_text.cpp` 转换为 `Generated/ui_text_gbk.cpp`；生成文件不应手动编辑。
 4. 通过与实板匹配的 SWD 调试器下载内部固件。调试器、设备包和本机工具路径需按实际环境配置。
 
-仓库不跟踪对象文件、构建日志、个人 Keil 配置和生成的内部固件；请从源码构建。保留的 `SRC.sct` 是链接布局文件。
+源码仓库不跟踪对象文件、构建日志、个人 Keil 配置和生成的内部固件；Release 制作包另附已有 HEX，便于直接烧录。保留的 `SRC.sct` 是链接布局文件。
 
 v3.1 历史全量构建结果：`0 Error / 0 Warning`；Code / RO-data / RW-data / ZI-data 分别为 **188496 / 20896 / 48 / 59408 B**，最大已知静态栈深 **800 B + Unknown**，主栈预留 4096 B。
 
